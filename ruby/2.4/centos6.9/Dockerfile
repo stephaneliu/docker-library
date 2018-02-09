@@ -1,8 +1,7 @@
 FROM centos:centos6.9
 
 WORKDIR /tmp
-COPY ./optruby243-devel-2.4.3-1.el6.x86_64.rpm .
-COPY ./optruby243-2.4.3-1.el6.x86_64.rpm .
+COPY ./*.rpm /tmp/
 
 # Includes dependencies for building nokogiri
 RUN yum -y install \
@@ -11,7 +10,11 @@ RUN yum -y install \
     libxml2-devel \
     libxslt-devel \
     optruby243-devel-2.4.3-1.el6.x86_64.rpm \
-    optruby243-2.4.3-1.el6.x86_64.rpm
+    optruby243-2.4.3-1.el6.x86_64.rpm \
+    perl-Git-2.9.5-2.el6.noarch.rpm \
+    git-2.9.5-2.el6.x86_64.rpm \
+    git-core-2.9.5-2.el6.x86_64.rpm \
+    git-core-doc-2.9.5-2.el6.x86_64.rpm
 
 ENV PATH="/opt/ruby-2.4.3/bin:${PATH}"
 
